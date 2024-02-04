@@ -1,26 +1,26 @@
-def count_vowels_and_consonants(file_content):
+def countVowelsAndConsonants(content):
     vowels = {'A', 'E', 'I', 'O', 'U'}
-    vowel_count = consonant_count = 0
+    vowelCount = consonantCount = 0
 
-    for char in file_content:
+    for char in content:
         if char.upper() in vowels:
-            vowel_count += 1
+            vowelCount += 1
         elif char.isalpha():
-            consonant_count += 1
+            consonantCount += 1
 
-    return vowel_count, consonant_count
+    return vowelCount, consonantCount
 
-file_name = input("Enter the filename: ")
+fileName = input("Enter the filename: ")
 try:
-    with open(file_name, 'r') as file:
+    with open(fileName, 'r') as file:
         content = file.read()
-    vowels, consonants = count_vowels_and_consonants(content)
+    vowels, consonants = countVowelsAndConsonants(content)
     print(f"Number of vowels: {vowels}")
     print(f"Number of consonants: {consonants}")
 
 except FileNotFoundError:
-    print(f"File '{file_name}' not found.")
+    print(f"File '{fileName}' not found.")
 except IOError:
-    print(f"Error reading file '{file_name}'.")
+    print(f"Error reading file '{fileName}'.")
 except Exception as e:
     print(f"An error occurred: {e}")

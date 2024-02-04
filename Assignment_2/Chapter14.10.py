@@ -1,17 +1,17 @@
 import random
 
-def display_question(states_capitals):
-    state = random.choice(list(states_capitals.keys()))
-    correct_answer = states_capitals[state]
+def displayQuestion(statesCapitals):
+    state = random.choice(list(statesCapitals.keys()))
+    correct = statesCapitals[state]
 
-    user_answer = input(f"What is the capital of {state}? ").strip()
+    user = input(f"What is the capital of {state}? ").strip()
 
-    if user_answer.lower() == correct_answer.lower():
+    if user.lower() == correct.lower():
         print("Correct!")
     else:
-        print(f"Incorrect. The correct answer is {correct_answer}.")
+        print(f"Incorrect. The correct answer is {correct}.")
 
-states_capitals = {
+statesCapitals = {
     "Alabama": "Montgomery",
     "Alaska": "Juneau",
     "Arizona": "Phoenix",
@@ -66,4 +66,4 @@ states_capitals = {
 
 # Display random questions
 for _ in range(5):  # Display 5 questions, you can change the number as needed
-    display_question(states_capitals)
+    displayQuestion(statesCapitals)
