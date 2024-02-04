@@ -1,5 +1,4 @@
 import urllib.request
-
 def count_words_in_address(url):
     try:
         response = urllib.request.urlopen(url)

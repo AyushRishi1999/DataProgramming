@@ -1,18 +1,18 @@
-def remove_string_from_file(file_name, string_to_remove):
+def removeStringFromFile(name, st):
     try:
-        with open(file_name, 'r') as file:
+        with open(name, 'r') as file:
             content = file.read()
-        updated_content = content.replace(string_to_remove, '')
-        with open(file_name, 'w') as file:
-            file.write(updated_content)
-        print(f"All occurrences of '{string_to_remove}' removed from {file_name}.")
+        updatedContent = content.replace(st, '')
+        with open(name, 'w') as file:
+            file.write(updatedContent)
+        print(f"All occurrences of '{st}' removed from {name}.")
     except FileNotFoundError:
-        print(f"File '{file_name}' not found.")
+        print(f"File '{name}' not found.")
     except IOError:
-        print(f"Error reading or writing file '{file_name}'.")
+        print(f"Error reading or writing file '{name}'.")
     except Exception as e:
         print(f"An error occurred: {e}")
 
-file_name = input("Enter the filename: ")
-string_to_remove = input("Enter the string to be removed: ")
-remove_string_from_file(file_name, string_to_remove)
+name = input("Enter the filename: ")
+stringToRemove = input("Enter the string to be removed: ")
+removeStringFromFile(name, stringToRemove)
