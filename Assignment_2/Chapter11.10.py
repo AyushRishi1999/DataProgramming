@@ -1,31 +1,29 @@
 import random
-def generate_matrix(rows, cols):
-    matrix=[]
-    for i in range(rows):
-        r=[]
-        for j in range(cols):
-            elm=random.randint(0, 1)
-            r.append(elm)
-        matrix.append(r)
-    return matrix
+matrix = []
+for r in range(4):
+    row = []
+    for c in range(4):
+        row.append(random.randint(0,1))
+    matrix.append(row)
 
-def print_matrix(matrix):
-    for row in matrix:
-        print(row)
+maxRowIndex = 0
+maxRowCount = 0
+maxColIndex = 0
+maxColCount = 0
 
-def find_most_ones(matrix):
-    max_ones_row_index = max(range(len(matrix)), key=lambda i: matrix[i].count(1))
-    max_ones_col_indices = [j for j in range(len(matrix[0])) if any(matrix[i][j] == 1 for i in range(len(matrix)))]
-    return max_ones_row_index, max_ones_col_indices
+for r in range(len(matrix)):
+    rowCount = colCount = 0
+    for c in range(len(matrix[0])):
+        if matrix[r][c] == 1:
+            rowCount += 1
+        if matrix[c][r] == 1:
+            colCount += 1
+    if rowCount > maxRowCount:
+        maxRowCount = rowCount
+        maxRowIndex = r
+    if colCount > maxColCount:
+        maxColCount = colCount
+        maxColIndex = r
 
-rows = int(input("Enter the number of rows: "))
-cols = int(input("Enter the number of columns: "))
-
-matrix = generate_matrix(rows, cols)
-print("\nGenerated Matrix:")
-print_matrix(matrix)
-
-max_ones_row_index, max_ones_col_indices = find_most_ones(matrix)
-
-print("\nThe largest row index:", max_ones_row_index)
-print("The largest column index:", ", ".join(map(str, max_ones_col_indices)))
+print('The largest row index:', str(maxRowIndex))
+print('The largest column index:', str(maxColIndex))
