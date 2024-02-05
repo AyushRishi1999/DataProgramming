@@ -1,15 +1,9 @@
 import time
 offsetTimeZone = eval(input("Enter the time zone offset to GMT : "))
-seconds = time.time()
-remainderHours = seconds%(24*60*60)
-hours = remainderHours//(60*60)
-remainderMinutes = seconds%(60*60)
-minutes = remainderMinutes//60
-remainderSeconds = seconds%60
-''''offsetHours = offsetTimeZone//10
-offsetMinutes = (offsetTimeZone%100)
-if offsetMinutes+int(minutes) > 60 :
-    offsetHours += 1
-    offsetMinutes -= 60
-'''
-print(int(hours)+offsetTimeZone,":", int(minutes),":",int(remainderSeconds))
+today = time.time()%(24*60*60)
+offsetTimeInSeconds = today + (offsetTimeZone * 60 * 60)
+hours = offsetTimeInSeconds//(60*60)
+minutes = (offsetTimeInSeconds%(60*60))//60
+seconds = (offsetTimeInSeconds%(60*60))%60
+
+print(int(hours % 24),":", int(minutes),":",int(seconds))
